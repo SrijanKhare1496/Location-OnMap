@@ -14,7 +14,7 @@ function onDeviceReady() {
 // }
 
 navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-  timeout: 30000
+  timeout: 30000 , enableHighAccuracy: true
 });
 
 function onSuccess(position) {
@@ -24,8 +24,9 @@ function onSuccess(position) {
   //Google Maps
   var myLatlng = new google.maps.LatLng(lat, lang);
   var mapOptions = {
-      zoom: 10,
-      center: myLatlng
+      zoom: 1,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   var marker = new google.maps.Marker({
